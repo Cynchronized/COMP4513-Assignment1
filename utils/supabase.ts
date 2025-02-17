@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
-import { SUPABASE_KEY, SUPABASE_URL } from './config.ts'
+import config from './config'
 
-const supabaseUrl: string = SUPABASE_URL
-const supabaseKey: string = SUPABASE_KEY
+const supabaseUrl: string = config.SUPABASE_URL
+const supabaseKey: string = config.SUPABASE_KEY
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
