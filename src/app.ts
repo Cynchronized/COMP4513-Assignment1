@@ -6,6 +6,7 @@ import galleryRouter from '../controllers/galleries';
 import artistRouter from '../controllers/artists';
 import paintingRouter from '../controllers/paintings';
 import genreRouter from '../controllers/genres'
+import countRouter from '../controllers/counts'
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.use('/api/galleries', galleryRouter);
 app.use('/api/artists', artistRouter);
 app.use('/api/paintings', paintingRouter);
 app.use('/api/genres', genreRouter);
+app.use('/api/counts', countRouter);
 
 export default app; 
