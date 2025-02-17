@@ -16,16 +16,19 @@ genreRouter.get('/', async (req: Request, res: Response) => {
 });
 
 genreRouter.get('/:ref', async (req: Request, res: Response) => {
+  const genreId = req.params.ref;
+
   const { data, error } = await supabase
     .from('genres')
     .select(`${defaultQuery}`)
-    .eq('genreId', req.params.ref);
+    .eq('genreId', genreId);
 
   res.status(200).json(data);
 });
 
 genreRouter.get('/painting/:ref', async (req: Request, res: Response) => {
   const paintingId = req.params.ref;
+
   const { data, error } = await supabase
     .from('genres')
     .select(`genreName, paintinggenres!inner(paintings!inner(title))`)

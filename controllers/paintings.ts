@@ -37,20 +37,23 @@ paintingRouter.get('/sort/:sortBy', async (req: Request, res: Response) => {
 });
 
 paintingRouter.get('/:ref', async (req: Request, res: Response) => {
+  const paintingId = req.params.ref;
+
   const { data, error } = await supabase
     .from('paintings')
     .select(`${defaultQuery}`)
-    .eq('paintingId', req.params.ref)
+    .eq('paintingId', paintingId)
     .order('title');
 
   res.status(200).json(data);
 });
 
 paintingRouter.get('/search/:substring', async (req: Request, res: Response) => {
+  const substring = req.params.substring;
   const { data, error } = await supabase
     .from('paintings')
     .select(`${defaultQuery}`)
-    .ilike('title', `${req.params.substring}%`)
+    .ilike('title', `${substring}%`)
     .order('title');
 
   res.status(200).json(data);
@@ -74,31 +77,60 @@ paintingRouter.get('/years/:start/:end', async (req: Request, res: Response) => 
 });
 
 paintingRouter.get('/galleries/:ref', async (req: Request, res: Response) => {
+  const galleryId = req.params.ref;
+
   const { data, error } = await supabase
     .from('paintings')
     .select(`${defaultQuery}`)
-    .eq('galleries.galleryId', req.params.ref)
+    .eq('galleries.galleryId', galleryId)
     .order('title');
 
   res.status(200).json(data);
 });
 
 paintingRouter.get('/artist/:ref', async (req: Request, res: Response) => {
+  const artistId = req.params.ref;
+
   const { data, error } = await supabase
     .from('paintings')
     .select(`${defaultQuery}`)
-    .eq('artists.artistId', req.params.ref)
+    .eq('artists.artistId', artistId)
     .order('title');
 
   res.status(200).json(data);
 });
 
 paintingRouter.get('/artists/country/:substring', async (req: Request, res: Response) => {
+  const substring = req.params.substring;
+
   const { data, error } = await supabase
     .from('paintings')
     .select(`${defaultQuery}`)
-    .ilike('artists.country', `${req.params.substring}%`)
+    .ilike('artists.country', `${substring}%`)
     .order('title')
+
+  res.status(200).json(data);
+});
+
+paintingRouter.get('/genre/:ref', async (req: Request, res: Response) => {
+  const genreId = req.params.ref;
+
+  const { data, error } = await supabase
+    .from('paintings')
+    .select('paintingId, title, yearOfWork, paintinggenres!inner(genres!inner(genreName))')
+    .eq('paintinggenres.genreId', genreId)
+    .order('yearOfWork');
+
+  res.status(200).json(data);
+});
+
+paintingRouter.get('/era/:ref', async (req: Request, res: Response) => {
+  const eraId = req.params.ref;
+
+  const { data, error } = await supabase
+    .from('paintings')
+    .select(`paintingId, title, yearOfWork, paintinggenres!inner(genres!inner(eras!inner( eraName,eraYears )))`)
+    .eq('paintinggenres.genres.eras.eraId', eraId);
 
   res.status(200).json(data);
 });

@@ -12,28 +12,34 @@ artistRouter.get('/', async (req: Request, res: Response) => {
 });
 
 artistRouter.get('/:ref', async (req: Request, res: Response) => {
+  const artistId = req.params.ref;
+
   const { data, error } = await supabase
     .from('artists')
     .select()
-    .eq('artistId', req.params.ref);
+    .eq('artistId', artistId);
 
   res.status(200).json(data);
 });
 
 artistRouter.get('/search/:substring', async (req: Request, res: Response) => {
+  const substring = req.params.substring;
+
   const { data, error } = await supabase
     .from('artists')
     .select()
-    .ilike('lastName', `${req.params.substring}%`);
+    .ilike('lastName', `${substring}%`);
 
   res.status(200).json(data);
 });
 
 artistRouter.get('/country/:substring', async (req: Request, res: Response) => {
+  const substring = req.params.substring;
+
   const { data, error } = await supabase
     .from('artists')
     .select()
-    .ilike('nationality', `${req.params.substring}%`);
+    .ilike('nationality', `${substring}%`);
 
   res.status(200).json(data);
 });
