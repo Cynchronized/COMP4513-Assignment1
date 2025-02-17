@@ -130,7 +130,8 @@ paintingRouter.get('/era/:ref', async (req: Request, res: Response) => {
   const { data, error } = await supabase
     .from('paintings')
     .select(`paintingId, title, yearOfWork, paintinggenres!inner(genres!inner(eras!inner( eraName,eraYears )))`)
-    .eq('paintinggenres.genres.eras.eraId', eraId);
+    .eq('paintinggenres.genres.eras.eraId', eraId)
+    .order('yearOfWork');
 
   res.status(200).json(data);
 });
