@@ -5,6 +5,7 @@ import erasRouter from '../controllers/eras';
 import galleryRouter from '../controllers/galleries';
 import artistRouter from '../controllers/artists';
 import paintingRouter from '../controllers/paintings';
+import genreRouter from '../controllers/genres'
 
 const app = express();
 
@@ -15,5 +16,6 @@ app.use('/api/eras', erasRouter);
 app.use('/api/galleries', galleryRouter);
 app.use('/api/artists', artistRouter);
 app.use('/api/paintings', paintingRouter);
+app.use('/api/genres', genreRouter);
 
 export default app; 
