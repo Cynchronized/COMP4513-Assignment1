@@ -30,7 +30,7 @@ paintingRouter.get('/sort/:sortBy', (req, res) => __awaiter(void 0, void 0, void
     const { sortBy } = req.params;
     const validSortFields = ['title', 'yearOfWork'];
     if (!validSortFields.includes(sortBy)) {
-        res.status(400).json({ error: 'Invalid sort parameter. Use "title" or "year".' });
+        res.status(400).json({ error: 'Invalid sort parameter. Use "title" or "yearOfWork".' });
     }
     const { data, error } = yield supabase_1.supabase
         .from('paintings')

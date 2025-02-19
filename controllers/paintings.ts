@@ -25,7 +25,7 @@ paintingRouter.get('/sort/:sortBy', async (req: Request, res: Response) => {
   const validSortFields = ['title', 'yearOfWork'];
 
   if (!validSortFields.includes(sortBy)) {
-    res.status(400).json({ error: 'Invalid sort parameter. Use "title" or "year".' });
+    res.status(400).json({ error: 'Invalid sort parameter. Use "title" or "yearOfWork".' });
   }
 
   const { data, error } = await supabase
