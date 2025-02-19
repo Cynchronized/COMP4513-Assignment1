@@ -30,7 +30,11 @@ countRouter.get('/topgenres/:ref', async (req: Request, res: Response) => {
     .gt('count', numberOfPaintings)
     .order('count', { ascending: false });
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: No genre with at least "${numberOfPaintings}" paintings`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 

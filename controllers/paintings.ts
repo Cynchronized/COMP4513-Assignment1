@@ -45,18 +45,27 @@ paintingRouter.get('/:ref', async (req: Request, res: Response) => {
     .eq('paintingId', paintingId)
     .order('title');
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Painting with ID "${paintingId}" was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 paintingRouter.get('/search/:substring', async (req: Request, res: Response) => {
   const substring = req.params.substring;
+
   const { data, error } = await supabase
     .from('paintings')
     .select(`${defaultQuery}`)
     .ilike('title', `${substring}%`)
     .order('title');
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Painting with title that starts with "${substring}" was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 paintingRouter.get('/years/:start/:end', async (req: Request, res: Response) => {
@@ -85,7 +94,11 @@ paintingRouter.get('/galleries/:ref', async (req: Request, res: Response) => {
     .eq('galleries.galleryId', galleryId)
     .order('title');
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Gallery with ID: "${galleryId} was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 paintingRouter.get('/artist/:ref', async (req: Request, res: Response) => {
@@ -97,7 +110,11 @@ paintingRouter.get('/artist/:ref', async (req: Request, res: Response) => {
     .eq('artists.artistId', artistId)
     .order('title');
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Artist with ID: "${artistId}" was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 paintingRouter.get('/artists/country/:substring', async (req: Request, res: Response) => {
@@ -109,7 +126,11 @@ paintingRouter.get('/artists/country/:substring', async (req: Request, res: Resp
     .ilike('artists.country', `${substring}%`)
     .order('title')
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Artist country that starts with "${substring}" was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 paintingRouter.get('/genre/:ref', async (req: Request, res: Response) => {
@@ -121,7 +142,11 @@ paintingRouter.get('/genre/:ref', async (req: Request, res: Response) => {
     .eq('paintinggenres.genreId', genreId)
     .order('yearOfWork');
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Genre with ID "${genreId}" was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 paintingRouter.get('/era/:ref', async (req: Request, res: Response) => {
@@ -133,7 +158,11 @@ paintingRouter.get('/era/:ref', async (req: Request, res: Response) => {
     .eq('paintinggenres.genres.eras.eraId', eraId)
     .order('yearOfWork');
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Era with ID "${eraId}" was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 export default paintingRouter;

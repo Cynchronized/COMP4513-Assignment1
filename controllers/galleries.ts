@@ -19,7 +19,11 @@ galleryRouter.get('/:ref', async (req: Request, res: Response) => {
     .select()
     .eq('galleryId', galleryId);
 
-  res.status(200).json(data);
+  if (data === null || data.length == 0) {
+    res.status(400).json(`Error: Gallery with ID "${galleryId}" was not found.`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 galleryRouter.get('/country/:substring', async (req: Request, res: Response) => {
@@ -30,7 +34,11 @@ galleryRouter.get('/country/:substring', async (req: Request, res: Response) => 
     .select()
     .ilike('galleryCountry', `${substring}%`);
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Gallery that starts with "${substring}" was not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 export default galleryRouter

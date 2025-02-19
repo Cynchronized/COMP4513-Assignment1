@@ -5,7 +5,6 @@ const genreRouter = Router();
 
 // This gets all columns from genres and eras without foreign keys
 const defaultQuery = 'genreId, genreName, description, wikiLink, eras!inner (eraName, eraYears)'
-
 genreRouter.get('/', async (req: Request, res: Response) => {
   const { data, error } = await supabase
     .from('genres')
@@ -23,7 +22,11 @@ genreRouter.get('/:ref', async (req: Request, res: Response) => {
     .select(`${defaultQuery}`)
     .eq('genreId', genreId);
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: genre with ID "${genreId}" not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 genreRouter.get('/painting/:ref', async (req: Request, res: Response) => {
@@ -35,7 +38,11 @@ genreRouter.get('/painting/:ref', async (req: Request, res: Response) => {
     .eq('paintinggenres.paintingId', paintingId)
     .order('genreName', { ascending: true });
 
-  res.status(200).json(data);
+  if (data == null || data.length == 0) {
+    res.status(400).json(`Error: Painting with ID "${paintingId}" not found`);
+  } else {
+    res.status(200).json(data);
+  }
 });
 
 export default genreRouter;
