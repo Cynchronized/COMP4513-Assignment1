@@ -16,6 +16,8 @@ erasRouter.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const { data, error } = yield supabase_1.supabase
         .from("eras")
         .select();
+    console.log(data);
+    console.log(error);
     res.status(200).json(data);
 }));
 exports.default = erasRouter;

@@ -8,6 +8,9 @@ erasRouter.get('/', async (req: Request, res: Response) => {
     .from("eras")
     .select();
 
+  console.log(data);
+  console.log(error);
+
   res.status(200).json(data);
 });
 
