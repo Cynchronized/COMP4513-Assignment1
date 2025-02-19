@@ -8,6 +8,56 @@ This project is a backend service built using Node.js and Express with TypeScrip
 
 ## 📚 Getting Started
 
+### API Endpoints
+
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| GET    | [`/api/eras`](https://comp4513-assignment1.fly.dev/api/eras) | Fetch all eras |
+| GET    | [`/api/galleries`](https://comp4513-assignment1.fly.dev/api/galleries) | Fetch all galleries |
+| GET    | [`/api/galleries/:id`](https://comp4513-assignment1.fly.dev/api/galleries/30) | Fetch gallery by ID |
+| GET    | [`/api/galleries/:id`](https://comp4513-assignment1.fly.dev/api/galleries/Calgary) | Fetch gallery by ID with error |
+| GET    | [`/api/galleries/country/:country`](https://comp4513-assignment1.fly.dev/api/galleries/country/fra) | Fetch gallery by country substring |
+| GET    | [`/api/artists`](https://comp4513-assignment1.fly.dev/api/artists) | Fetch all artists |
+| GET    | [`/api/artists/:id`](https://comp4513-assignment1.fly.dev/api/artists/12) | Fetch artist by ID |
+| GET    | [`/api/artists/:id`](https://comp4513-assignment1.fly.dev/api/artists/1223423) | Fetch artist by ID with error |
+| GET    | [`/api/artists/search/:lastName`](https://comp4513-assignment1.fly.dev/api/artists/search/ma) | Fetch artist by last name substring |
+| GET    | [`/api/artists/search/:lastName`](https://comp4513-assignment1.fly.dev/api/artists/search/mA) | Fetch artist by last name substring |
+| GET    | [`/api/artists/country/:country`](https://comp4513-assignment1.fly.dev/api/artists/country/fra) | Fetch artist by country substring |
+| GET    | [`/api/paintings`](https://comp4513-assignment1.fly.dev/api/paintings) | Fetch all paintings |
+| GET    | [`/api/paintings/sort/:filter`](https://comp4513-assignment1.fly.dev/api/paintings/sort/yearOfWork) | Fetch all paintings sorted by either 'title' or 'yearOfWork' |
+| GET    | [`/api/paintings/:id`](https://comp4513-assignment1.fly.dev/api/paintings/63) | Fetch painting by ID |
+| GET    | [`/api/paintings/search/:title`](https://comp4513-assignment1.fly.dev/api/paintings/search/port) | Fetch painting by title substring |
+| GET    | [`/api/paintings/search/:title`](https://comp4513-assignment1.fly.dev/api/paintings/search/pORt) | Fetch painting by title substring |
+| GET    | [`/api/paintings/search/:title`](https://comp4513-assignment1.fly.dev/api/paintings/search/connolly) | Fetch painting by title substring with error |
+| GET    | [`/api/paintings/years/:start/:end`](https://comp4513-assignment1.fly.dev/api/paintings/years/1800/1850) | Fetch painting between two years |
+| GET    | [`/api/paintings/galleries/:id`](https://comp4513-assignment1.fly.dev/api/paintings/galleries/5) | Fetch all paintings in a gallery by ID |
+| GET    | [`/api/paintings/artist/:id`](https://comp4513-assignment1.fly.dev/api/paintings/artist/16) | Fetch all paintings by an artist by ID |
+| GET    | [`/api/paintings/artist/country/:country`](https://comp4513-assignment1.fly.dev/api/paintings/artist/country/ital) | Fetch all paintings by an artist by country |
+| GET    | [`/api/genres`](https://comp4513-assignment1.fly.dev/api/genres) | Fetch all genres |
+| GET    | [`/api/genres/:id`](https://comp4513-assignment1.fly.dev/api/genres/76) | Fetch genre by ID |
+| GET    | [`/api/genres/painting/:id`](https://comp4513-assignment1.fly.dev/api/genres/painting/408) | Fetch genres of painting by ID |
+| GET    | [`/api/genres/painting/:id`](https://comp4513-assignment1.fly.dev/api/genres/painting/jsdfhg) | Fetch genres of painting by ID with error |
+| GET    | [`/api/paintings/genre/:id`](https://comp4513-assignment1.fly.dev/api/paintings/genre/78) | Fetch all paintings by genre ID |
+| GET    | [`/api/paintings/era/:id`](https://comp4513-assignment1.fly.dev/api/paintings/era/2) | Fetch all paintings by era ID |
+| GET    | [`/api/counts/genres`](https://comp4513-assignment1.fly.dev/api/counts/genres) | Fetch count of paintings by genre |
+| GET    | [`/api/counts/topgenres/:minimum`](https://comp4513-assignment1.fly.dev/api/counts/topgenres/20) | Fetch count of paintings for each genre with a minimum number |
+| GET    | [`/api/counts/topgenres/:minimum`](https://comp4513-assignment1.fly.dev/api/counts/topgenres/2034958) | Fetch count of paintings for each genre with a minimum number with error|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Dependencies
 
 Ensure you have the following installed before proceeding:
