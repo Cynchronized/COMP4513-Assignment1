@@ -109,7 +109,7 @@ paintingRouter.get('/artist/:ref', (req, res) => __awaiter(void 0, void 0, void 
         res.status(200).json(data);
     }
 }));
-paintingRouter.get('/artists/country/:substring', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+paintingRouter.get('/artist/country/:substring', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const substring = req.params.substring;
     const { data, error } = yield supabase_1.supabase
         .from('paintings')

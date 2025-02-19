@@ -117,7 +117,7 @@ paintingRouter.get('/artist/:ref', async (req: Request, res: Response) => {
   }
 });
 
-paintingRouter.get('/artists/country/:substring', async (req: Request, res: Response) => {
+paintingRouter.get('/artist/country/:substring', async (req: Request, res: Response) => {
   const substring = req.params.substring;
 
   const { data, error } = await supabase
