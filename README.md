@@ -6,7 +6,7 @@ Node.js App with Supabase and Fly.io
 
 This project is a backend service built using Node.js and Express with TypeScript. It utilizes Supabase as the database backend and is deployed on Fly.io. This project is for COMP4513 Winter 2025.
 
-## Getting Started
+## 📚 Getting Started
 
 ### Dependencies
 
@@ -57,7 +57,7 @@ Ensure you have the following installed before proceeding:
    flyctl logs
    ```
 
-## Help
+## 🤝 Help
 
 Common issues and troubleshooting:
 
@@ -69,16 +69,16 @@ Common issues and troubleshooting:
 * Check Supabase database connection logs if API requests fail.
 * Check Fly.io logs to see deployment issues.
 
-## Authors
+## 🗨️ Authors
 
 Austin Thieu  
 [@Cynchronized](https://github.com/Cynchronized)
 
-## Cloud Dependencies
+## 🚀 Cloud Dependencies
 
 * [Supabase](https://supabase.io/)
 * [Fly.io](https://fly.io/)
 
-## License
+## 📃License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.
